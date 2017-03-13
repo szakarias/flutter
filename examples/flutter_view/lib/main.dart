@@ -2,7 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() {
+void main(List<String> arguments) {
+  print("[####] Args: ${arguments}");
   runApp(new FlutterView());
 }
 

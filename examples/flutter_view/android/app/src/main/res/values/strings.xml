@@ -3,5 +3,9 @@
   <string name="app_name">Flutter View</string>
   <string name="title">Flutter Application</string>
   <string name="button_tap">Flutter button tapped 0 times.</string>
+  <string name="button_split_view">Split Flutter/Android View</string>
+  <string name="button_full_screen_view">Full Screen Flutter View</string>
+
   <string name="android">Android</string>
+
 </resources>

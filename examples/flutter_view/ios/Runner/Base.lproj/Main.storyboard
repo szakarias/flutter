@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FnB-1o-m6P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aVe-t7-WMa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,6 +8,61 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Choose View-->
+        <scene sceneID="hZh-O5-6Q8">
+            <objects>
+                <viewController id="9d8-4s-ynI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jey-mb-WuQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="C5e-IV-ga8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MCR-1B-vEf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKT-0V-jgV">
+                                <rect key="frame" x="95" y="281" width="185" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Split Flutter/iOS View"/>
+                                <connections>
+                                    <segue destination="FnB-1o-m6P" kind="show" id="dUX-39-cYq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEa-yN-qcm">
+                                <rect key="frame" x="95" y="356" width="185" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Full Screen Flutter View"/>
+                                <connections>
+                                    <segue destination="TDB-Qt-XLI" kind="show" id="YSg-b1-i2N"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Choose View" id="jgU-FB-Vbz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ogD-C0-LrW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1895.2" y="-199.25037481259372"/>
+        </scene>
+        <!--Flutter View Controller-->
+        <scene sceneID="N2s-2E-Mf0">
+            <objects>
+                <viewController id="TDB-Qt-XLI" customClass="FlutterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0yP-Mt-I9y"/>
+                        <viewControllerLayoutGuide type="bottom" id="npj-it-KgN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N0E-H8-f4E">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Mk-ct-J3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1608" y="721"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="nCd-Pe-nwC">
             <objects>
@@ -53,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YK3-cu-zew" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1858" y="211"/>
+            <point key="canvasLocation" x="-919.20000000000005" y="210.94452773613196"/>
         </scene>
         <!--Flutter View Controller-->
         <scene sceneID="QiU-td-PNw">
@@ -70,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvJ-Dz-mOO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1060" y="76"/>
+            <point key="canvasLocation" x="-120.8" y="75.562218890554732"/>
         </scene>
         <!--Native View Controller-->
         <scene sceneID="W4R-Y9-Lec">
@@ -91,7 +146,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="264"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flutter button tapped 0 times." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJ2-AA-Riy" userLabel="IncremetLabel">
-                                                <rect key="frame" x="73" y="122" width="229" height="21"/>
+                                                <rect key="frame" x="73.5" y="122.5" width="228.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -106,7 +161,7 @@
                                         <rect key="frame" x="0.0" y="264" width="375" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0h-kv-J7E">
-                                                <rect key="frame" x="20" y="14" width="48" height="36"/>
+                                                <rect key="frame" x="20" y="14" width="47.5" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -158,7 +213,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YRn-0M-UIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1090.4000000000001" y="489.3553223388306"/>
+            <point key="canvasLocation" x="-121" y="463"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="isC-Je-fav">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aVe-t7-WMa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T8d-6w-SEQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9d8-4s-ynI" kind="relationship" relationship="rootViewController" id="TWg-gQ-9HV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cO3-DQ-8vv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2834.4000000000001" y="-199.25037481259372"/>
         </scene>
     </scenes>
     <resources>

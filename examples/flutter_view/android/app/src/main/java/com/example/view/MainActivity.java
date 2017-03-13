@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         if (intent.getBooleanExtra("enable-dart-profiling", false)) {
             args.add("--enable-dart-profiling");
         }
+        args.add("RunApp1");
         if (!args.isEmpty()) {
             String[] argsArray = new String[args.size()];
             return args.toArray(argsArray);
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         String[] args = getArgsFromIntent(getIntent());
         FlutterMain.ensureInitializationComplete(getApplicationContext(), args);
-        setContentView(R.layout.flutter_view_layout);
+        setContentView(R.layout.flutter_view_split_layout);
         getSupportActionBar().hide();
 
         flutterView = (FlutterView) findViewById(R.id.flutter_view);
