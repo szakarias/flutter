@@ -55,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         flutterView = (FlutterView) findViewById(R.id.flutter_view);
+
         flutterView.runFromBundle(FlutterMain.findAppBundlePath(getApplicationContext()), null);
+        flutterView.pushRoute("/splitView");
 
         messageChannel = new BasicMessageChannel<>(flutterView, CHANNEL, StringCodec.INSTANCE);
         messageChannel.

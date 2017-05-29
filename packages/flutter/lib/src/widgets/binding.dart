@@ -201,6 +201,7 @@ abstract class WidgetsBinding extends BindingBase implements GestureBinding, Ren
   Future<dynamic> _handleNavigationInvocation(MethodCall methodCall) async {
     if (methodCall.method == 'popRoute')
       handlePopRoute();
+    if (methodCall.method == 'pushRoute')
     // TODO(abarth): Handle 'pushRoute'.
   }
 

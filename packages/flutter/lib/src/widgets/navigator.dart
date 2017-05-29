@@ -808,6 +808,7 @@ class NavigatorState extends State<Navigator> with TickerProviderStateMixin {
   /// Returns a [Future] that completes to the `result` value passed to [pop]
   /// when the pushed route is popped off the navigator.
   Future<dynamic> push(Route<dynamic> route) {
+    print('PUSHING route $route');
     assert(!_debugLocked);
     assert(() { _debugLocked = true; return true; });
     assert(route != null);
