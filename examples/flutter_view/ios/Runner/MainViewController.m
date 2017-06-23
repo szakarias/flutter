@@ -34,6 +34,7 @@ static NSString* const channel = @"increment";
 
   if ([segue.identifier isEqualToString:@"FlutterViewControllerSegue"]) {
     self.flutterViewController = segue.destinationViewController;
+    [self.flutterViewController setInitialRoute:@"/splitView"];
 
     self.messageChannel = [FlutterBasicMessageChannel messageChannelWithName:channel
                                                              binaryMessenger:self.flutterViewController
@@ -49,6 +50,7 @@ static NSString* const channel = @"increment";
 
 - (void)didTapIncrementButton {
   [self.messageChannel sendMessage:ping];
-}
+
+  }
 
 @end
