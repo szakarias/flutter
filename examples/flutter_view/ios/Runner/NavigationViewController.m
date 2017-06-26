@@ -13,6 +13,15 @@ static NSString* const channel = @"samples.flutter.io/platform_view";
 
 @implementation NavigationViewController
 
+- (void) viewWillAppear:(BOOL)animated {
+  [self.navigationController setNavigationBarHidden:YES];
+  [super viewWillAppear:animated];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+  [self.navigationController setNavigationBarHidden:NO];
+  [super viewWillDisappear:animated];
+}
 - (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
   if ([segue.identifier isEqualToString:@"FlutterViewControllerNavigationSegue"]) {
     FlutterViewController* flutterViewController = segue.destinationViewController;

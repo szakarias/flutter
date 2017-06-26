@@ -14,7 +14,7 @@
     <application android:name="io.flutter.app.FlutterApplication" android:label="flutter_view" android:icon="@mipmap/ic_launcher">
         <activity android:name=".NavigateActivity"
                   android:launchMode="singleTop"
-                  android:theme="@style/Theme.AppCompat"
+                  android:theme="@style/Theme.AppCompat.NoActionBar"
                   android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection"
                   android:hardwareAccelerated="true"
                   android:windowSoftInputMode="adjustResize">
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection"
             android:hardwareAccelerated="true">
         </activity>

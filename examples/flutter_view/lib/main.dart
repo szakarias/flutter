@@ -28,7 +28,7 @@ class FlutterView extends StatelessWidget {
                 ),
               ),
             ),
-        '/splitView': (BuildContext context) => new MyHomePage()
+        '/splitView':(BuildContext context) => new MyHomePage()
       },
       // Forces use of initial route from platform (otherwise it defaults to /
       // and platform's initial route is ignored).
@@ -76,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: new AppBar(title: new Text('Flutter View')),
       body: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[

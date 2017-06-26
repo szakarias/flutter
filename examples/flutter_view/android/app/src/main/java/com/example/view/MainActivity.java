@@ -49,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
+//    getSupportActionBar().hide();
     String[] args = getArgsFromIntent(getIntent());
     FlutterMain.ensureInitializationComplete(getApplicationContext(), args);
     setContentView(R.layout.flutter_view_layout);
-    getSupportActionBar().hide();
+
 
     flutterView = (FlutterView) findViewById(R.id.flutter_view);
     flutterView.setInitialRoute("/splitView");
