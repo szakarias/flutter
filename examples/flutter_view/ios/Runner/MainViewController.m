@@ -19,6 +19,10 @@ static NSString* const emptyString = @"";
 static NSString* const ping = @"ping";
 static NSString* const channel = @"increment";
 
+
+static NSString* const method = @"backPressed";
+static NSString* const methodChannelName = @"samples.flutter.io/back";
+
 @implementation MainViewController
 
 - (NSString*) messageName {
@@ -45,6 +49,20 @@ static NSString* const channel = @"increment";
       [weakSelf.nativeViewController didReceiveIncrement];
       reply(emptyString);
     }];
+  
+    
+    FlutterMethodChannel* methodChannel =
+    [FlutterMethodChannel methodChannelWithName:methodChannelName
+                                binaryMessenger:self.flutterViewController];
+    
+    [methodChannel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
+      if ([method isEqualToString:call.method]) {
+        [weakSelf.navigationController popViewControllerAnimated:NO];
+      } else {
+        result(FlutterMethodNotImplemented);
+      }
+    }];
+  
   }
 }
 

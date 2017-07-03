@@ -10,6 +10,8 @@ import android.widget.TextView;
 import io.flutter.plugin.common.BasicMessageChannel;
 import io.flutter.plugin.common.BasicMessageChannel.MessageHandler;
 import io.flutter.plugin.common.BasicMessageChannel.Reply;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.StringCodec;
 import io.flutter.view.FlutterMain;
 import io.flutter.view.FlutterView;
@@ -23,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
   private static final String EMPTY_MESSAGE = "";
   private static final String PING = "ping";
   private BasicMessageChannel messageChannel;
+
+  private static final String METHOD_CHANNEL = "samples.flutter.io/back";
+  private static final String METHOD_BACK = "backPressed";
+
 
   private String[] getArgsFromIntent(Intent intent) {
     // Before adding more entries to this list, consider that arbitrary
@@ -76,6 +82,20 @@ public class MainActivity extends AppCompatActivity {
         sendAndroidIncrement();
       }
     });
+
+
+    new MethodChannel(flutterView, METHOD_CHANNEL).setMethodCallHandler(
+        new MethodChannel.MethodCallHandler() {
+          @Override
+          public void onMethodCall(MethodCall methodCall, MethodChannel.Result result) {
+            if (methodCall.method.equals(METHOD_BACK)) {
+              onBackPressed();
+            } else {
+              result.notImplemented();
+            }
+          }
+        }
+    );
   }
 
   private void sendAndroidIncrement() {

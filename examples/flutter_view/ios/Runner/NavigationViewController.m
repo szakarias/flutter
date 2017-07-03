@@ -19,7 +19,7 @@ static NSString* const channel = @"samples.flutter.io/platform_view";
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
-  [self.navigationController setNavigationBarHidden:NO];
+//  [self.navigationController setNavigationBarHidden:NO];
   [super viewWillDisappear:animated];
 }
 - (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {

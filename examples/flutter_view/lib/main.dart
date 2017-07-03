@@ -28,7 +28,7 @@ class FlutterView extends StatelessWidget {
                 ),
               ),
             ),
-        '/splitView':(BuildContext context) => new MyHomePage()
+        '/splitView': (BuildContext context) => new MyHomePage()
       },
       // Forces use of initial route from platform (otherwise it defaults to /
       // and platform's initial route is ignored).
@@ -38,7 +38,31 @@ class FlutterView extends StatelessWidget {
 
   void showSplitView() {
     // Tell Android to load splitview layout
-    _methodChannel.invokeMethod("switchView");
+    _methodChannel.invokeMethod('switchView');
+  }
+}
+
+class MyBackButton extends StatelessWidget {
+  /// Creates an [IconButton] with the appropriate "back" icon for the current
+  /// target platform.
+  const MyBackButton({Key key, this.color, this.onPressed}) : super(key: key);
+
+  /// The color to use for the icon.
+  ///
+  /// Defaults to the [IconThemeData.color] specified in the ambient [IconTheme],
+  /// which usually matches the ambient [Theme]'s [ThemeData.iconTheme].
+  final Color color;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    context;
+    return new IconButton(
+      icon: const BackButtonIcon(),
+      color: color,
+      tooltip: 'Back',
+      onPressed: onPressed,
+    );
   }
 }
 
@@ -53,6 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
   static const String _emptyMessage = "";
   static const BasicMessageChannel<String> platform =
       const BasicMessageChannel<String>(_channel, const StringCodec());
+  static const MethodChannel _methodBackChannel =
+      const MethodChannel("samples.flutter.io/back");
 
   int _counter = 0;
 
@@ -73,10 +99,19 @@ class _MyHomePageState extends State<MyHomePage> {
     platform.send(_pong);
   }
 
+
+
   @override
   Widget build(BuildContext context) {
+    MyBackButton myBackButton = new MyBackButton(onPressed: () {
+      _methodBackChannel.invokeMethod('backPressed');
+      Navigator.of(context).maybePop();
+    },);
+
+
     return new Scaffold(
-      appBar: new AppBar(title: new Text('Flutter View')),
+      appBar:
+          new AppBar(leading: myBackButton, title: new Text('Flutter View')),
       body: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
