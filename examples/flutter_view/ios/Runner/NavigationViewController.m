@@ -8,7 +8,7 @@
 #import "NavigationViewController.h"
 #import "MainViewController.h"
 
-static NSString* const method = @"switchView";
+static NSString* const method = @"showSplitView";
 static NSString* const channel = @"samples.flutter.io/platform_view";
 
 @implementation NavigationViewController
@@ -32,7 +32,7 @@ static NSString* const channel = @"samples.flutter.io/platform_view";
     
     NavigationViewController*  __weak weakSelf = self;
     [methodChannel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
-      if ([@"switchView" isEqualToString:call.method]) {
+      if ([method isEqualToString:call.method]) {
         MainViewController* mainViewController =
             [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"MainView"];
         [weakSelf.navigationController pushViewController:mainViewController animated:NO];

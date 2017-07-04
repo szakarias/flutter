@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
   private FlutterView flutterView;
   private int counter;
-  private static final String CHANNEL = "increment";
+  private static final String CHANNEL = "samples.flutter.io/increment";
   private static final String EMPTY_MESSAGE = "";
   private static final String PING = "ping";
   private BasicMessageChannel messageChannel;

@@ -10,7 +10,8 @@ import io.flutter.plugin.common.MethodChannel;
 public class NavigateActivity extends FlutterActivity {
 
   private static final String CHANNEL = "samples.flutter.io/platform_view";
-  private static final String METHOD_SWITCH_VIEW = "switchView";
+  private static final String METHOD_SHOW_SPLIT_VIEW = "showSplitView";
+  private static final String METHOD_SHOW_FULL_VIEW = "showFullView";
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,7 @@ public class NavigateActivity extends FlutterActivity {
         new MethodChannel.MethodCallHandler() {
           @Override
           public void onMethodCall(MethodCall methodCall, MethodChannel.Result result) {
-            if (methodCall.method.equals(METHOD_SWITCH_VIEW)) {
+            if (methodCall.method.equals(METHOD_SHOW_SPLIT_VIEW)) {
               onlaunchSplitScreen();
             } else {
               result.notImplemented();

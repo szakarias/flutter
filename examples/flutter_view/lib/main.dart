@@ -7,9 +7,13 @@ void main() {
   runApp(new FlutterView());
 }
 
+const appBarText = const Text('Flutter View');
+
 class FlutterView extends StatelessWidget {
   static const MethodChannel _methodChannel =
       const MethodChannel("samples.flutter.io/platform_view");
+  static const String _showSplitView = 'showSplitView';
+  static const String _showFullView = 'showFullView';
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,7 @@ class FlutterView extends StatelessWidget {
       ),
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => new Scaffold(
-              appBar: new AppBar(title: new Text('Flutter View')),
+              appBar: new AppBar(title: appBarText),
               body: new Center(
                 child: new RaisedButton(
                   onPressed: showSplitView,
@@ -38,7 +42,7 @@ class FlutterView extends StatelessWidget {
 
   void showSplitView() {
     // Tell Android to load splitview layout
-    _methodChannel.invokeMethod('switchView');
+    _methodChannel.invokeMethod(_showSplitView);
   }
 }
 
@@ -72,20 +76,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static const String _channel = "increment";
+  static const BasicMessageChannel<String> _platform =
+      const BasicMessageChannel<String>(
+          'samples.flutter.io/increment', const StringCodec());
+  static const MethodChannel _methodBackChannel =
+      const MethodChannel('samples.flutter.io/back');
   static const String _pong = "pong";
   static const String _emptyMessage = "";
-  static const BasicMessageChannel<String> platform =
-      const BasicMessageChannel<String>(_channel, const StringCodec());
-  static const MethodChannel _methodBackChannel =
-      const MethodChannel("samples.flutter.io/back");
 
   int _counter = 0;
 
   @override
   void initState() {
     super.initState();
-    platform.setMessageHandler(_handlePlatformIncrement);
+    _platform.setMessageHandler(_handlePlatformIncrement);
   }
 
   Future<String> _handlePlatformIncrement(String message) async {
@@ -96,22 +100,20 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _sendFlutterIncrement() {
-    platform.send(_pong);
+    _platform.send(_pong);
   }
-
-
 
   @override
   Widget build(BuildContext context) {
-    MyBackButton myBackButton = new MyBackButton(onPressed: () {
-      _methodBackChannel.invokeMethod('backPressed');
-      Navigator.of(context).maybePop();
-    },);
-
+    MyBackButton myBackButton = new MyBackButton(
+      onPressed: () {
+        _methodBackChannel.invokeMethod('backPressed');
+        Navigator.of(context).maybePop();
+      },
+    );
 
     return new Scaffold(
-      appBar:
-          new AppBar(leading: myBackButton, title: new Text('Flutter View')),
+      appBar: new AppBar(leading: myBackButton, title: appBarText),
       body: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[

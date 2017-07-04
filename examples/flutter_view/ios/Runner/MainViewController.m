@@ -17,7 +17,7 @@
 
 static NSString* const emptyString = @"";
 static NSString* const ping = @"ping";
-static NSString* const channel = @"increment";
+static NSString* const channel = @"samples.flutter.io/increment";
 
 
 static NSString* const method = @"backPressed";
