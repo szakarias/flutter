@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
+  print('Running main ${window.defaultRouteName}');
   runApp(new FlutterView());
 }
 
@@ -25,14 +27,27 @@ class FlutterView extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => new Scaffold(
               appBar: new AppBar(title: appBarText),
-              body: new Center(
-                child: new RaisedButton(
-                  onPressed: showSplitView,
-                  child: new Text('Show split view'),
-                ),
+              body: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Center(
+                    child: new Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: new RaisedButton(
+                        onPressed: showSplitView,
+                        child: new Text('Show split view'),
+                      ),
+                    ),
+                  ),
+                  new RaisedButton(
+                    onPressed: showFullScreenView,
+                    child: new Text('Show full screen view'),
+                  ),
+                ],
               ),
             ),
-        '/splitView': (BuildContext context) => new MyHomePage()
+        '/splitView': (BuildContext context) => new SplitScreenView(),
+        '/fullScreenView': (BuildContext context) => new FullScreenViewPage(),
       },
       // Forces use of initial route from platform (otherwise it defaults to /
       // and platform's initial route is ignored).
@@ -41,8 +56,11 @@ class FlutterView extends StatelessWidget {
   }
 
   void showSplitView() {
-    // Tell Android to load splitview layout
     _methodChannel.invokeMethod(_showSplitView);
+  }
+
+  void showFullScreenView() {
+    _methodChannel.invokeMethod(_showFullView);
   }
 }
 
@@ -70,12 +88,94 @@ class MyBackButton extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class FullScreenViewPage extends StatefulWidget {
+
+  const FullScreenViewPage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _FullScreenViewPageState createState() => new _FullScreenViewPageState();
+}
+
+class _FullScreenViewPageState extends State<FullScreenViewPage> {
+  static const MethodChannel _methodChannel =
+  const MethodChannel("samples.flutter.io/platform_view");
+
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  Future<Null> _launchPlatformCount() async {
+    final int platformCounter =
+    await _methodChannel.invokeMethod("switchView", _counter);
+    setState(() {
+      _counter = platformCounter;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) => new Scaffold(
+    appBar: new AppBar(
+      title: appBarText,
+    ),
+    body: new Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        new Expanded(
+          child: new Center(
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Text(
+                  'Button tapped $_counter time${ _counter == 1 ? '' : 's' }.',
+                  style: const TextStyle(fontSize: 17.0),
+                ),
+                new Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: new RaisedButton(
+                      child: Platform.isIOS
+                          ? const Text('Continue in iOS view')
+                          : const Text('CONTINUE IN ANDROID VIEW'),
+                      onPressed: _launchPlatformCount),
+                ),
+              ],
+            ),
+          ),
+        ),
+        new Container(
+          padding: const EdgeInsets.only(bottom: 16.0, left: 5.0),
+          child: new Row(
+            children: <Widget>[
+              new Image.asset('assets/flutter-mark-square-64.png',
+                  scale: 1.5),
+              const Text(
+                'Flutter',
+                style: const TextStyle(fontSize: 30.0),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+    floatingActionButton: new FloatingActionButton(
+      onPressed: _incrementCounter,
+      tooltip: 'Increment',
+      child: const Icon(Icons.add),
+    ),
+  );
+}
+
+class SplitScreenView extends StatefulWidget {
   @override
   _MyHomePageState createState() => new _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<SplitScreenView> {
   static const BasicMessageChannel<String> _platform =
       const BasicMessageChannel<String>(
           'samples.flutter.io/increment', const StringCodec());

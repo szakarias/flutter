@@ -23,6 +23,8 @@ public class NavigateActivity extends FlutterActivity {
           public void onMethodCall(MethodCall methodCall, MethodChannel.Result result) {
             if (methodCall.method.equals(METHOD_SHOW_SPLIT_VIEW)) {
               onlaunchSplitScreen();
+            } else if (methodCall.method.equals(METHOD_SHOW_FULL_VIEW)) {
+              onlaunchFullScreen();
             } else {
               result.notImplemented();
             }
@@ -30,6 +32,11 @@ public class NavigateActivity extends FlutterActivity {
         }
     );
   }
+
+  private void onlaunchFullScreen() {
+    startActivity(new Intent(this, FullScreenActivity.class));
+  }
+
 
   private void onlaunchSplitScreen() {
     Intent splitScreenIntent = new Intent(this, MainActivity.class);

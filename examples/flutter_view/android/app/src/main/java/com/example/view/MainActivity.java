@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
   private void onFlutterIncrement() {
     counter++;
     TextView textView = (TextView) findViewById(R.id.button_tap);
-    String value = "Flutter button tapped " + counter + (counter == 1 ? " time" : " times");
+    String value = "Flutter button tapped " + counter + (counter == 1 ? " time." : " times.");
     textView.setText(value);
   }
 
