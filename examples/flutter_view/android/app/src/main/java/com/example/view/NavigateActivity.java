@@ -9,7 +9,7 @@ import io.flutter.plugin.common.MethodChannel;
 
 public class NavigateActivity extends FlutterActivity {
 
-  private static final String CHANNEL = "samples.flutter.io/platform_view";
+  private static final String CHANNEL = "samples.flutter.io/view";
   private static final String METHOD_SHOW_SPLIT_VIEW = "showSplitView";
   private static final String METHOD_SHOW_FULL_VIEW = "showFullView";
 
@@ -34,15 +34,11 @@ public class NavigateActivity extends FlutterActivity {
   }
 
   private void onlaunchFullScreen() {
-    startActivity(new Intent(this, FullScreenActivity.class));
+    startActivity(new Intent(this, FullScreenFlutterActivity.class));
   }
-
 
   private void onlaunchSplitScreen() {
-    Intent splitScreenIntent = new Intent(this, MainActivity.class);
-
-    startActivity(splitScreenIntent);
+    startActivity(new Intent(this, SplitScreenActivity.class));
   }
-
 
 }

@@ -18,17 +18,13 @@ import io.flutter.view.FlutterView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class SplitScreenActivity extends AppCompatActivity {
   private FlutterView flutterView;
   private int counter;
   private static final String CHANNEL = "samples.flutter.io/increment";
   private static final String EMPTY_MESSAGE = "";
   private static final String PING = "ping";
   private BasicMessageChannel messageChannel;
-
-  private static final String METHOD_CHANNEL = "samples.flutter.io/back";
-  private static final String METHOD_BACK = "backPressed";
-
 
   private String[] getArgsFromIntent(Intent intent) {
     // Before adding more entries to this list, consider that arbitrary
@@ -55,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-//    getSupportActionBar().hide();
     String[] args = getArgsFromIntent(getIntent());
     FlutterMain.ensureInitializationComplete(getApplicationContext(), args);
     setContentView(R.layout.flutter_view_layout);
@@ -82,20 +77,6 @@ public class MainActivity extends AppCompatActivity {
         sendAndroidIncrement();
       }
     });
-
-
-    new MethodChannel(flutterView, METHOD_CHANNEL).setMethodCallHandler(
-        new MethodChannel.MethodCallHandler() {
-          @Override
-          public void onMethodCall(MethodCall methodCall, MethodChannel.Result result) {
-            if (methodCall.method.equals(METHOD_BACK)) {
-              onBackPressed();
-            } else {
-              result.notImplemented();
-            }
-          }
-        }
-    );
   }
 
   private void sendAndroidIncrement() {
