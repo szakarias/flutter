@@ -20,6 +20,7 @@ class SystemNavigator {
   /// the latter may cause the underlying platform to act as if the application
   /// had crashed.
   static Future<Null> pop() async {
+    print("dart: systemnavigator.pop");
     await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
   }
 }

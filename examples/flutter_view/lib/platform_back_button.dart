@@ -27,7 +27,9 @@ class PlatformBackButton extends StatelessWidget {
       color: color,
       tooltip: 'Back',
       onPressed: () async {
+        print("PlatformBackButton pressed");
         if (await Navigator.of(context).maybePop()) {
+          print("maybe pop true");
           return;
         }
         SystemNavigator.pop();

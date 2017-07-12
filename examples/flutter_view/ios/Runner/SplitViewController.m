@@ -5,10 +5,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MainViewController.h"
+#import "SplitViewController.h"
 #import "NativeViewController.h"
 
-@interface MainViewController ()
+@interface SplitViewController ()
 
 @property (nonatomic) NativeViewController* nativeViewController;
 @property (nonatomic) FlutterViewController* flutterViewController;
@@ -23,7 +23,7 @@ static NSString* const channel = @"samples.flutter.io/increment";
 static NSString* const method = @"backPressed";
 static NSString* const methodChannelName = @"samples.flutter.io/back";
 
-@implementation MainViewController
+@implementation SplitViewController
 
 - (NSString*) messageName {
   return channel;
@@ -44,7 +44,7 @@ static NSString* const methodChannelName = @"samples.flutter.io/back";
                                                              binaryMessenger:self.flutterViewController
                                                                        codec:[FlutterStringCodec sharedInstance]];
 
-    MainViewController*  __weak weakSelf = self;
+    SplitViewController*  __weak weakSelf = self;
     [self.messageChannel setMessageHandler:^(id message, FlutterReply reply) {
       [weakSelf.nativeViewController didReceiveIncrement];
       reply(emptyString);
@@ -64,6 +64,12 @@ static NSString* const methodChannelName = @"samples.flutter.io/back";
     }];
   
   }
+  UIViewController* c = [UIApplication sharedApplication].keyWindow.rootViewController;
+//  FlutterNavigationController* f = self.navigationController;
+  
+  
+  
+  
 }
 
 - (void)didTapIncrementButton {

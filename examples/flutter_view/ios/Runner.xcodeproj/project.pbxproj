@@ -10,7 +10,7 @@
 		2D4B11271E55A15A00FF14DB /* NativeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B11261E55A15A00FF14DB /* NativeViewController.m */; };
 		2D73698A1EFBFE0600940286 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7369881EFBFE0600940286 /* NavigationViewController.m */; };
 		2DD8945F1E5B87AF0010574F /* ic_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD8945E1E5B87AF0010574F /* ic_add.png */; };
-		2DE332E71E55C6D800393FD5 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE332E61E55C6D800393FD5 /* MainViewController.m */; };
+		2DE332E71E55C6D800393FD5 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE332E61E55C6D800393FD5 /* SplitViewController.m */; };
 		3B3967021E83382E004F5970 /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3967011E83382E004F5970 /* App.framework */; };
 		3B3967031E83382E004F5970 /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3967011E83382E004F5970 /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B3967051E83383D004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967041E83383D004F5970 /* AppFrameworkInfo.plist */; };
@@ -49,8 +49,8 @@
 		2D7369871EFBFE0600940286 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		2D7369881EFBFE0600940286 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		2DD8945E1E5B87AF0010574F /* ic_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add.png; sourceTree = "<group>"; };
-		2DE332E61E55C6D800393FD5 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		2DE332E81E55C6F100393FD5 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		2DE332E61E55C6D800393FD5 /* SplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitViewController.m; sourceTree = "<group>"; };
+		2DE332E81E55C6F100393FD5 /* SplitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
 		3B3967011E83382E004F5970 /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = App.framework; path = Flutter/App.framework; sourceTree = "<group>"; };
 		3B3967041E83383D004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
@@ -130,8 +130,8 @@
 				2DD8945E1E5B87AF0010574F /* ic_add.png */,
 				7AFFD8ED1D35381100E5BB4D /* AppDelegate.h */,
 				7AFFD8EE1D35381100E5BB4D /* AppDelegate.m */,
-				2DE332E81E55C6F100393FD5 /* MainViewController.h */,
-				2DE332E61E55C6D800393FD5 /* MainViewController.m */,
+				2DE332E81E55C6F100393FD5 /* SplitViewController.h */,
+				2DE332E61E55C6D800393FD5 /* SplitViewController.m */,
 				2D4B11261E55A15A00FF14DB /* NativeViewController.m */,
 				2D4B11281E55A31800FF14DB /* NativeViewController.h */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
@@ -166,12 +166,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
+				1026E7AF2D084C81F6F56A1D /* [CP] Check Pods Manifest.lock */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
+				B6D6A7A37374D18E4AE3FE28 /* [CP] Embed Pods Frameworks */,
+				A012F430CF50B3220DEB8D68 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -234,6 +237,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1026E7AF2D084C81F6F56A1D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,6 +280,36 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
 		};
+		A012F430CF50B3220DEB8D68 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6D6A7A37374D18E4AE3FE28 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -273,7 +321,7 @@
 				97C146F31CF9000F007C117D /* main.m in Sources */,
 				2D4B11271E55A15A00FF14DB /* NativeViewController.m in Sources */,
 				2D73698A1EFBFE0600940286 /* NavigationViewController.m in Sources */,
-				2DE332E71E55C6D800393FD5 /* MainViewController.m in Sources */,
+				2DE332E71E55C6D800393FD5 /* SplitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

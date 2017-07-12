@@ -36,10 +36,10 @@
             </objects>
             <point key="canvasLocation" x="-2037.5999999999999" y="-262.21889055472263"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Split View Controller-->
         <scene sceneID="nCd-Pe-nwC">
             <objects>
-                <viewController storyboardIdentifier="MainView" id="FnB-1o-m6P" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplitView" id="FnB-1o-m6P" customClass="SplitViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MCZ-qn-U8U"/>
                         <viewControllerLayoutGuide type="bottom" id="T9c-61-ZEO"/>
@@ -207,10 +207,10 @@
             </objects>
             <point key="canvasLocation" x="-1167" y="-262"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Flutter Navigation Controller-->
         <scene sceneID="UIA-E1-Fwi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IZJ-mu-5dT" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IZJ-mu-5dT" customClass="FlutterNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="L5S-pU-O96">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

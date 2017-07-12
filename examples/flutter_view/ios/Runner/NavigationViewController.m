@@ -6,15 +6,18 @@
 #import <Flutter/Flutter.h>
 
 #import "NavigationViewController.h"
-#import "MainViewController.h"
+#import "SplitViewController.h"
+
+@interface NavigationViewController ()
+@end
 
 static NSString* const method = @"showSplitView";
-static NSString* const channel = @"samples.flutter.io/platform_view";
+static NSString* const channel = @"samples.flutter.io/view";
 
 @implementation NavigationViewController
 
 - (void) viewWillAppear:(BOOL)animated {
-  [self.navigationController setNavigationBarHidden:YES];
+//  [self.navigationController setNavigationBarHidden:YES];
   [super viewWillAppear:animated];
 }
 
@@ -27,15 +30,16 @@ static NSString* const channel = @"samples.flutter.io/platform_view";
     FlutterViewController* flutterViewController = segue.destinationViewController;
     
     FlutterMethodChannel* methodChannel =
-    [FlutterMethodChannel methodChannelWithName:@"samples.flutter.io/platform_view"
+    [FlutterMethodChannel methodChannelWithName:channel
                                 binaryMessenger:flutterViewController];
     
     NavigationViewController*  __weak weakSelf = self;
     [methodChannel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
       if ([method isEqualToString:call.method]) {
-        MainViewController* mainViewController =
-            [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"MainView"];
-        [weakSelf.navigationController pushViewController:mainViewController animated:NO];
+        SplitViewController* splitViewController =
+            [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"SplitView"];
+   //     [weakSelf.navigationController test];
+        [weakSelf.navigationController pushViewController:splitViewController animated:NO];
       } else {
         result(FlutterMethodNotImplemented);
       }
