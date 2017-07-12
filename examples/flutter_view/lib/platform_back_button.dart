@@ -26,14 +26,21 @@ class PlatformBackButton extends StatelessWidget {
       icon: const BackButtonIcon(),
       color: color,
       tooltip: 'Back',
-      onPressed: () async {
-        print("PlatformBackButton pressed");
-        if (await Navigator.of(context).maybePop()) {
-          print("maybe pop true");
-          return;
-        }
-        SystemNavigator.pop();
-      },
+//      onPressed: () async {
+//        print("PlatformBackButton pressed");
+//        if (await Navigator.of(context).maybePop()) {
+//          print("maybe pop true");
+//          return;
+//        }
+//        SystemNavigator.pop();
+//      },
+        onPressed: () {
+          Navigator.of(context).maybePop().then((bool didPop) {
+            if (didPop)
+              return;
+            SystemNavigator.pop();
+          }).catchError((dynamic error) {});
+        },
     );
   }
 }
