@@ -64,12 +64,6 @@ static NSString* const methodChannelName = @"samples.flutter.io/back";
     }];
   
   }
-  UIViewController* c = [UIApplication sharedApplication].keyWindow.rootViewController;
-//  FlutterNavigationController* f = self.navigationController;
-  
-  
-  
-  
 }
 
 - (void)didTapIncrementButton {

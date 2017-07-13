@@ -9,6 +9,7 @@
 #endif /* RootViewController_h */
 
 #import <UIKit/UIKit.h>
+#import "FullNativeViewController.h"
 
-@interface NavigationViewController: UIViewController 
+@interface NavigationViewController: UIViewController <FullNativeViewControllerDelegate>
 @end

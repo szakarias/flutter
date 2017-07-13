@@ -9,12 +9,16 @@
 #import "SplitViewController.h"
 
 @interface NavigationViewController ()
+@property (nonatomic) FlutterViewController* flutterViewController;
 @end
 
-static NSString* const method = @"showSplitView";
+static NSString* const showSplitViewMethod = @"showSplitView";
+static NSString* const showFullViewMethod = @"showFullView";
 static NSString* const channel = @"samples.flutter.io/view";
 
 @implementation NavigationViewController
+
+  FlutterResult _flutterResult;
 
 - (void) viewWillAppear:(BOOL)animated {
 //  [self.navigationController setNavigationBarHidden:YES];
@@ -26,6 +30,7 @@ static NSString* const channel = @"samples.flutter.io/view";
   [super viewWillDisappear:animated];
 }
 - (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
+      NavigationViewController*  __weak weakSelf = self;
   if ([segue.identifier isEqualToString:@"FlutterViewControllerNavigationSegue"]) {
     FlutterViewController* flutterViewController = segue.destinationViewController;
     
@@ -33,18 +38,53 @@ static NSString* const channel = @"samples.flutter.io/view";
     [FlutterMethodChannel methodChannelWithName:channel
                                 binaryMessenger:flutterViewController];
     
-    NavigationViewController*  __weak weakSelf = self;
+
     [methodChannel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
-      if ([method isEqualToString:call.method]) {
+      if ([showSplitViewMethod isEqualToString:call.method]) {
         SplitViewController* splitViewController =
             [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"SplitView"];
-   //     [weakSelf.navigationController test];
         [weakSelf.navigationController pushViewController:splitViewController animated:NO];
+      } else if ([showFullViewMethod isEqualToString:call.method]) {
+        [self performSegueWithIdentifier:@"FullFlutterViewSegue" sender:self];
+        
+//        FlutterViewController* flutterViewController = [FlutterViewController alloc] init
+//        FullViewController* fullViewController =
+//            [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"FullView"];
+//        [weakSelf.navigationController pushViewController:fullViewController animated:NO];
       } else {
         result(FlutterMethodNotImplemented);
       }
     }];
+  } else if ([segue.identifier isEqualToString:@"FullFlutterViewSegue"]) {
+    self.flutterViewController = segue.destinationViewController;
+    [self.flutterViewController setInitialRoute:@"/fullScreenView"];
+    
+    FlutterMethodChannel* switchViewChannel =
+        [FlutterMethodChannel methodChannelWithName:@"samples.flutter.io/platform_view"
+                                binaryMessenger:self.flutterViewController];
+    
+    
+    
+    [switchViewChannel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
+      if ([@"switchView" isEqualToString:call.method]) {
+        _flutterResult = result;
+        FullNativeViewController* fullNativeViewController =
+        [self.storyboard instantiateViewControllerWithIdentifier:@"FullNativeView"];
+        fullNativeViewController.counter = ((NSNumber*)call.arguments).intValue;
+        fullNativeViewController.delegate = self;
+        
+        [weakSelf.navigationController pushViewController:fullNativeViewController animated:NO];
+      } else {
+        result(FlutterMethodNotImplemented);
+      }
+    }];
+    
+    
   }
+}
+
+- (void)didUpdateCounter:(int)counter {
+  _flutterResult([NSNumber numberWithInt:counter]);
 }
 
 @end
