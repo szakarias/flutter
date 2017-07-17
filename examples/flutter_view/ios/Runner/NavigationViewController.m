@@ -57,7 +57,7 @@ static NSString* const channel = @"samples.flutter.io/view";
     }];
   } else if ([segue.identifier isEqualToString:@"FullFlutterViewSegue"]) {
     self.flutterViewController = segue.destinationViewController;
-    [self.flutterViewController setInitialRoute:@"/fullScreenView"];
+    [self.flutterViewController setInitialRoute:@"fullScreenView"];
     
     FlutterMethodChannel* switchViewChannel =
         [FlutterMethodChannel methodChannelWithName:@"samples.flutter.io/platform_view"

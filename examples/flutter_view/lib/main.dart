@@ -29,8 +29,8 @@ class FlutterView extends StatelessWidget {
       ),
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => new MyHomePage(title),
-        '/splitView': (BuildContext context) => new SplitScreenView(title),
-        '/fullScreenView': (BuildContext context) => new FullScreenView(title),
+        'splitView': (BuildContext context) => new SplitScreenView(title),
+        'fullScreenView': (BuildContext context) => new FullScreenView(title),
       },
       // Forces use of initial route from platform (otherwise it defaults to /
       // and platform's initial route is ignored).

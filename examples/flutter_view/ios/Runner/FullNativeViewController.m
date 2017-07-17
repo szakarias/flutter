@@ -12,12 +12,14 @@
 
 
 @interface FullNativeViewController ()
+@property (weak, nonatomic) IBOutlet UIView *navigationBar;
 @property (weak, nonatomic) IBOutlet UILabel *incrementLabel;
 @end
 
 @implementation FullNativeViewController
 
 - (void) viewWillAppear:(BOOL)animated {
+//  [self.navigationBar setBackgroundColor:[UIColor colorWithCGColor:<#(nonnull CGColorRef)#>]]
 //  [self.navigationController setNavigationBarHidden:NO];
 //  [self.navigationController.navigationBar setBarTintColor:UIColor.darkGrayColor];
 //  

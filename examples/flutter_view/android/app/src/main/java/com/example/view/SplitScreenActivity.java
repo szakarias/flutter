@@ -57,7 +57,7 @@ public class SplitScreenActivity extends AppCompatActivity {
 
 
     flutterView = (FlutterView) findViewById(R.id.flutter_view);
-    flutterView.setInitialRoute("/splitView");
+    flutterView.setInitialRoute("splitView");
     flutterView.runFromBundle(FlutterMain.findAppBundlePath(getApplicationContext()), null);
 
     messageChannel = new BasicMessageChannel<>(flutterView, CHANNEL, StringCodec.INSTANCE);

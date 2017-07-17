@@ -38,7 +38,7 @@ static NSString* const methodChannelName = @"samples.flutter.io/back";
 
   if ([segue.identifier isEqualToString:@"FlutterViewControllerSegue"]) {
     self.flutterViewController = segue.destinationViewController;
-    [self.flutterViewController setInitialRoute:@"/splitView"];
+    [self.flutterViewController setInitialRoute:@"splitView"];
 
     self.messageChannel = [FlutterBasicMessageChannel messageChannelWithName:channel
                                                              binaryMessenger:self.flutterViewController

@@ -28,7 +28,7 @@ public class FullScreenFlutterActivity extends FlutterActivity {
     final FlutterView view = new FlutterView(this);
     view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
     setContentView(view);
-    view.setInitialRoute("/fullScreenView");
+    view.setInitialRoute("fullScreenView");
     return view;
   }
 
