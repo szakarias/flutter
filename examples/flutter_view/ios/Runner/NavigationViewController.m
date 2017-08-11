@@ -38,12 +38,15 @@ static NSString* const channel = @"samples.flutter.io/view";
     [FlutterMethodChannel methodChannelWithName:channel
                                 binaryMessenger:flutterViewController];
     
-
     [methodChannel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
+      
+      
       if ([showSplitViewMethod isEqualToString:call.method]) {
         SplitViewController* splitViewController =
             [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"SplitView"];
         [weakSelf.navigationController pushViewController:splitViewController animated:NO];
+        
+        
       } else if ([showFullViewMethod isEqualToString:call.method]) {
         [self performSegueWithIdentifier:@"FullFlutterViewSegue" sender:self];
         
