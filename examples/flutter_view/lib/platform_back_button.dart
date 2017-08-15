@@ -4,13 +4,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// TODO(zarah): Remove this class and use BackButton once "pop" has been
+/// refactored (issue  #11490).
 class PlatformBackButton extends StatelessWidget {
-  /// Creates an [IconButton] with the appropriate "back" icon for the current
-  /// target platform. [onPressed] instructs the [Navigator] widget to should
-  /// pop its current route if possible. If not, the system navigator is
-  /// instructed to remove this activity from the stack and
-  /// return to the previous activity.
-  ///
+
   const PlatformBackButton({Key key, this.color}) : super(key: key);
 
   /// The color to use for the icon.
@@ -26,14 +23,6 @@ class PlatformBackButton extends StatelessWidget {
       icon: const BackButtonIcon(),
       color: color,
       tooltip: 'Back',
-//      onPressed: () async {
-//        print("PlatformBackButton pressed");
-//        if (await Navigator.of(context).maybePop()) {
-//          print("maybe pop true");
-//          return;
-//        }
-//        SystemNavigator.pop();
-//      },
         onPressed: () {
           Navigator.of(context).maybePop().then((bool didPop) {
             if (didPop)

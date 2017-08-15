@@ -18,16 +18,8 @@
 
 @implementation FullNativeViewController
 
-- (void) viewWillAppear:(BOOL)animated {
-//  [self.navigationBar setBackgroundColor:[UIColor colorWithCGColor:<#(nonnull CGColorRef)#>]]
-//  [self.navigationController setNavigationBarHidden:NO];
-//  [self.navigationController.navigationBar setBarTintColor:UIColor.darkGrayColor];
-//  
-  [super viewWillAppear:animated];
-}
-
 - (void) viewWillDisappear:(BOOL)animated {
-  [self.navigationController setNavigationBarHidden:YES];
+//  [self.navigationController setNavigationBarHidden:YES];
   [self.delegate didUpdateCounter:self.counter];
   [super viewWillDisappear:animated];
 }

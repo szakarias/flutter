@@ -20,15 +20,6 @@ static NSString* const channel = @"samples.flutter.io/view";
 
   FlutterResult _flutterResult;
 
-- (void) viewWillAppear:(BOOL)animated {
-//  [self.navigationController setNavigationBarHidden:YES];
-  [super viewWillAppear:animated];
-}
-
-- (void) viewWillDisappear:(BOOL)animated {
-//  [self.navigationController setNavigationBarHidden:NO];
-  [super viewWillDisappear:animated];
-}
 - (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
       NavigationViewController*  __weak weakSelf = self;
   if ([segue.identifier isEqualToString:@"FlutterViewControllerNavigationSegue"]) {
@@ -49,11 +40,6 @@ static NSString* const channel = @"samples.flutter.io/view";
         
       } else if ([showFullViewMethod isEqualToString:call.method]) {
         [self performSegueWithIdentifier:@"FullFlutterViewSegue" sender:self];
-        
-//        FlutterViewController* flutterViewController = [FlutterViewController alloc] init
-//        FullViewController* fullViewController =
-//            [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"FullView"];
-//        [weakSelf.navigationController pushViewController:fullViewController animated:NO];
       } else {
         result(FlutterMethodNotImplemented);
       }

@@ -30,7 +30,6 @@ class _FullScreenViewState extends State<FullScreenView> {
   }
 
   Future<Null> _launchPlatformCount() async {
-    print("DART: invokeSwitchView");
     final int platformCounter =
         await _methodChannel.invokeMethod("switchView", _counter);
     setState(() {
